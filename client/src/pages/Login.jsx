@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 const Login = () => {
   const { user } = useSelector((state) => state.auth);
+  console.log("Login m user Data: ", user);
   const {
     register,
     handleSubmit,
@@ -18,7 +19,8 @@ const Login = () => {
   const submitHandler = async (data) => {
     console.log("submit");
   };
-  console.log(user);
+  console.log("User data: ",user);
+  
   useEffect(() => {
     user && navigate("/dashboard");
   }, [user]);
