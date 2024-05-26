@@ -26,7 +26,7 @@ export default function ConfirmatioDialog({
           <Dialog.Title as='h3' className=''>
             <p
               className={clsx(
-                "p-3 rounded-full ",
+                "p-3 rounded-full bg-[#2B2A4C]",
                 type === "restore" || type === "restoreAll"
                   ? "text-yellow-600 bg-yellow-100"
                   : "text-red-600 bg-red-200"
@@ -40,11 +40,11 @@ export default function ConfirmatioDialog({
             {msg ?? "Are you sure you want to delete the selected record?"}
           </p>
 
-          <div className='bg-gray-50 py-3 sm:flex sm:flex-row-reverse gap-4'>
+          <div className='py-3 sm:flex sm:flex-row-reverse gap-4'>
             <Button
               type='button'
               className={clsx(
-                " px-8 text-sm font-semibold text-white sm:w-auto",
+                " px-8 text-sm font-semibold text-white sm:w-auto rounded-xl",
                 type === "restore" || type === "restoreAll"
                   ? "bg-yellow-600"
                   : "bg-red-600 hover:bg-red-500"
@@ -55,7 +55,7 @@ export default function ConfirmatioDialog({
 
             <Button
               type='button'
-              className='bg-white px-8 text-sm font-semibold text-gray-900 sm:w-auto border'
+              className='bg-white px-8 text-sm font-semibold text-gray-900 sm:w-auto borderc rounded-xl'
               onClick={() => closeDialog()}
               label='Cancel'
             />
