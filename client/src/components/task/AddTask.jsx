@@ -41,7 +41,7 @@ const AddTask = ({ open, setOpen }) => {
         <form onSubmit={handleSubmit(submitHandler)}>
           <Dialog.Title
             as='h2'
-            className='text-base font-bold leading-6 text-gray-900 mb-4'
+            className='text-base font-bold leading-6 text-white mb-4'
           >
             {task ? "UPDATE TASK" : "ADD TASK"}
           </Dialog.Title>
@@ -73,7 +73,7 @@ const AddTask = ({ open, setOpen }) => {
                   type='date'
                   name='date'
                   label='Task Date'
-                  className='w-full rounded'
+                  className='w-full rounded text-white'
                   register={register("date", {
                     required: "Date is required!",
                   })}
@@ -97,19 +97,19 @@ const AddTask = ({ open, setOpen }) => {
                 >
                   <input
                     type='file'
-                    className='hidden'
+                    className='hidden text-white'
                     id='imgUpload'
                     onChange={(e) => handleSelect(e)}
                     accept='.jpg, .png, .jpeg'
                     multiple={true}
                   />
-                  <BiImages />
-                  <span>Add Assets</span>
+                  <BiImages className="text-white" />
+                  <span className="text-white">Add Assets</span>
                 </label>
               </div>
             </div>
 
-            <div className='bg-gray-50 py-6 sm:flex sm:flex-row-reverse gap-4'>
+            <div className='py-6 sm:flex sm:flex-row-reverse gap-4'>
               {uploading ? (
                 <span className='text-sm py-2 text-red-500'>
                   Uploading assets
@@ -118,13 +118,13 @@ const AddTask = ({ open, setOpen }) => {
                 <Button
                   label='Submit'
                   type='submit'
-                  className='bg-[#2B2A4C] px-8 text-sm font-semibold text-white sm:w-auto hover:bg-[black] hover:bg-opacity-60 '
+                  className='bg-[#030637] px-8  rounded-xl text-sm font-semibold text-white sm:w-auto hover:bg-[black] hover:bg-opacity-60 '
                 />
               )}
 
               <Button
                 type='button'
-                className='bg-white px-5 text-sm font-semibold text-gray-900 sm:w-auto'
+                className='bg-white px-5 rounded-xl text-sm font-semibold text-gray-900 sm:w-auto'
                 onClick={() => setOpen(false)}
                 label='Cancel'
               />

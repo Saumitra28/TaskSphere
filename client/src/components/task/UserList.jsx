@@ -24,21 +24,21 @@ const UserList = ({ setTeam, team }) => {
 
   return (
     <div>
-      <p className='text-gray-700'>Assign Task To: </p>
+      <p className='text-white'>Assign Task To: </p>
       <Listbox
         value={selectedUsers}
         onChange={(el) => handleChange(el)}
         multiple
       >
         <div className='relative mt-1'>
-          <Listbox.Button className='relative w-full cursor-default rounded bg-white pl-3 pr-10 text-left px-3 py-2.5 2xl:py-3 border border-gray-300 sm:text-sm'>
-            <span className='block truncate'>
+          <Listbox.Button className='relative w-full cursor-default rounded bg-[#2B2A4C] pl-3 pr-10 text-left px-3 py-2.5 2xl:py-3 border border-gray-300 sm:text-sm'>
+            <span className='block truncate text-white'>
               {selectedUsers?.map((user) => user.name).join(", ")}
             </span>
 
             <span className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2'>
               <BsChevronExpand
-                className='h-5 w-5 text-gray-400'
+                className='h-5 w-5 text-white'
                 aria-hidden='true'
               />
             </span>
@@ -50,13 +50,13 @@ const UserList = ({ setTeam, team }) => {
             leaveFrom='opacity-100'
             leaveTo='opacity-0'
           >
-            <Listbox.Options className='z-50 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm'>
+            <Listbox.Options className='z-50 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-[#2B2A4C] py-1 text-base shadow-xl ring-1 ring-black/5 focus:outline-none sm:text-sm'>
               {data?.map((user, index) => (
                 <Listbox.Option
                   key={index}
                   className={({ active }) =>
                     `relative cursor-default select-none py-2 pl-10 pr-4. ${
-                      active ? "bg-amber-100 text-amber-900" : "text-gray-900"
+                      active ? "bg-amber-100 text-amber-900" : "text-white"
                     } `
                   }
                   value={user}
