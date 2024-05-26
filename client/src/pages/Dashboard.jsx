@@ -24,7 +24,7 @@ const TaskTable = ({ tasks }) => {
 
   const TableHeader = () => (
     <thead className='border-b border-gray-300 '>
-      <tr className='text-black text-left'>
+      <tr className='text-[#fff] text-left'>
         <th className='py-2'>Task Title</th>
         <th className='py-2'>Priority</th>
         <th className='py-2'>Team</th>
@@ -41,7 +41,7 @@ const TaskTable = ({ tasks }) => {
             className={clsx("w-4 h-4 rounded-full", TASK_TYPE[task.stage])}
           />
 
-          <p className='text-base text-black'>{task.title}</p>
+          <p className='text-base text-[#fff]'>{task.title}</p>
         </div>
       </td>
 
@@ -78,7 +78,7 @@ const TaskTable = ({ tasks }) => {
   );
   return (
     <>
-      <div className='w-full md:w-2/3 bg-white px-2 md:px-4 pt-4 pb-4 shadow-md rounded'>
+      <div className='w-full md:w-2/3 bg-[#030637] px-2 md:px-4 pt-4 pb-4 shadow-md rounded'>
         <table className='w-full'>
           <TableHeader />
           <tbody>
@@ -95,7 +95,7 @@ const TaskTable = ({ tasks }) => {
 const UserTable = ({ users }) => {
   const TableHeader = () => (
     <thead className='border-b border-gray-300 '>
-      <tr className='text-black  text-left'>
+      <tr className='text-[#fff]  text-left'>
         <th className='py-2'>Full Name</th>
         <th className='py-2'>Status</th>
         <th className='py-2'>Created At</th>
@@ -113,7 +113,7 @@ const UserTable = ({ users }) => {
 
           <div>
             <p> {user.name}</p>
-            <span className='text-xs text-black'>{user?.role}</span>
+            <span className='text-xs text-[#fff]'>{user?.role}</span>
           </div>
         </div>
       </td>
@@ -133,7 +133,7 @@ const UserTable = ({ users }) => {
   );
 
   return (
-    <div className='w-full md:w-1/3 bg-white h-fit px-2 md:px-6 py-4 shadow-md rounded'>
+    <div className='w-full md:w-1/3 bg-[#030637] h-fit px-2 md:px-6 py-4 shadow-md rounded'>
       <table className='w-full mb-5'>
         <TableHeader />
         <tbody>
@@ -181,10 +181,10 @@ const Dashboard = () => {
 
   const Card = ({ label, count, bg, icon }) => {
     return (
-      <div className='w-full h-32 bg-white p-5 shadow-md rounded-md flex items-center justify-between'>
+      <div className='w-full h-32 bg-[#030637] p-5 shadow-md rounded-md flex items-center justify-between'>
         <div className='h-full flex flex-1 flex-col justify-between'>
-          <p className='text-base text-gray-600'>{label}</p>
-          <span className='text-2xl font-semibold'>{count}</span>
+          <p className='text-base text-[#fff]'>{label}</p>
+          <span className='text-2xl font-semibold text-white'>{count}</span>
           <span className='text-sm text-gray-400'>{"110 last month"}</span>
         </div>
 
@@ -207,7 +207,7 @@ const Dashboard = () => {
         ))}
       </div>
 
-      <div className='w-full bg-white my-16 p-4 rounded shadow-sm'>
+      <div className='w-full bg-[#030637] my-16 p-4 rounded shadow-sm'>
         <h4 className='text-xl text-gray-600 font-semibold'>
           Chart by Priority
         </h4>

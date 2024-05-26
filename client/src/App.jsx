@@ -22,7 +22,7 @@ function Layout() {
 
   return user ? (
     <div className='w-full h-screen flex flex-col md:flex-row'>
-      <div className='w-1/5 h-screen bg-white sticky top-0 hidden md:block'>
+      <div className='w-1/5 h-screen bg-[#100C08] sticky top-0 hidden md:block'>
         <Sidebar />
       </div>
 
@@ -95,7 +95,7 @@ const MobileSidebar = () => {
 
 function App() {
   return (
-    <main className='w-full min-h-screen bg-[#f3f4f6] '>
+    <main className='w-full min-h-screen bg-[#100C08] '>
       <Routes>
         <Route element={<Layout />}>
           <Route index path='/' element={<Navigate to='/dashboard' />} />
