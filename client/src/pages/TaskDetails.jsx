@@ -93,12 +93,12 @@ const TaskDetails = () => {
 
   return (
     <div className='w-full flex flex-col gap-3 mb-4 overflow-y-hidden'>
-      <h1 className='text-2xl text-gray-600 font-bold'>{task?.title}</h1>
+      <h1 className='text-2xl text-[#fff] font-bold'>{task?.title}</h1>
 
       <Tabs tabs={TABS} setSelected={setSelected}>
         {selected === 0 ? (
           <>
-            <div className='w-full flex flex-col md:flex-row gap-5 2xl:gap-8 bg-white shadow-md p-8 overflow-y-auto'>
+            <div className='w-full flex flex-col md:flex-row gap-5 2xl:gap-8 bg-[#030637] shadow-md p-8 overflow-y-auto'>
               {/* LEFT */}
               <div className='w-full md:w-1/2 space-y-8'>
                 <div className='flex items-center gap-5'>
@@ -120,30 +120,30 @@ const TaskDetails = () => {
                         TASK_TYPE[task.stage]
                       )}
                     />
-                    <span className='text-black uppercase'>{task?.stage}</span>
+                    <span className='text-[#fff] uppercase'>{task?.stage}</span>
                   </div>
                 </div>
 
-                <p className='text-gray-500'>
+                <p className='text-gray-300'>
                   Created At: {new Date(task?.date).toDateString()}
                 </p>
 
                 <div className='flex items-center gap-8 p-4 border-y border-gray-200'>
-                  <div className='space-x-2'>
+                  <div className='space-x-2 text-gray-300'>
                     <span className='font-semibold'>Assets :</span>
                     <span>{task?.assets?.length}</span>
                   </div>
 
                   <span className='text-gray-400'>|</span>
 
-                  <div className='space-x-2'>
+                  <div className='space-x-2 text-gray-300'>
                     <span className='font-semibold'>Sub-Task :</span>
                     <span>{task?.subTasks?.length}</span>
                   </div>
                 </div>
 
                 <div className='space-y-4 py-6'>
-                  <p className='text-gray-600 font-semibold test-sm'>
+                  <p className='text-gray-300 font-semibold test-sm'>
                     TASK TEAM
                   </p>
                   <div className='space-y-3'>
@@ -163,8 +163,8 @@ const TaskDetails = () => {
                         </div>
 
                         <div>
-                          <p className='text-lg font-semibold'>{m?.name}</p>
-                          <span className='text-gray-500'>{m?.title}</span>
+                          <p className='text-lg font-semibold text-[#fff]'>{m?.name}</p>
+                          <span className='text-gray-400'>{m?.title}</span>
                         </div>
                       </div>
                     ))}
@@ -172,7 +172,7 @@ const TaskDetails = () => {
                 </div>
 
                 <div className='space-y-4 py-6'>
-                  <p className='text-gray-500 font-semibold text-sm'>
+                  <p className='text-gray-300 font-semibold text-sm'>
                     SUB-TASKS
                   </p>
                   <div className='space-y-8'>
@@ -184,7 +184,7 @@ const TaskDetails = () => {
 
                         <div className='space-y-1'>
                           <div className='flex gap-2 items-center'>
-                            <span className='text-sm text-gray-500'>
+                            <span className='text-sm text-gray-300'>
                               {new Date(el?.date).toDateString()}
                             </span>
 
@@ -193,7 +193,7 @@ const TaskDetails = () => {
                             </span>
                           </div>
 
-                          <p className='text-gray-700'>{el?.title}</p>
+                          <p className='text-gray-500'>{el?.title}</p>
                         </div>
                       </div>
                     ))}
@@ -202,7 +202,7 @@ const TaskDetails = () => {
               </div>
               {/* RIGHT */}
               <div className='w-full md:w-1/2 space-y-8'>
-                <p className='text-lg font-semibold'>ASSETS</p>
+                <p className='text-lg font-semibold text-gray-300'>ASSETS</p>
 
                 <div className='w-full grid grid-cols-2 gap-4'>
                   {task?.assets?.map((el, index) => (
@@ -259,11 +259,11 @@ const Activities = ({ activity, id }) => {
   };
 
   return (
-    <div className='w-full flex gap-10 2xl:gap-20 min-h-screen px-10 py-8 bg-white shadow rounded-md justify-between overflow-y-auto'>
+    <div className='w-full flex gap-10 2xl:gap-20 min-h-screen px-10 py-8 bg-[#030637] shadow rounded-md justify-between overflow-y-auto'>
       <div className='w-full md:w-1/2'>
-        <h4 className='text-gray-600 font-semibold text-lg mb-5'>Activities</h4>
+        <h4 className='text-gray-300 font-semibold text-lg mb-5'>Activities</h4>
 
-        <div className='w-full'>
+        <div className='w-full text-[#fff]'>
           {activity?.map((el, index) => (
             <Card
               key={index}
@@ -275,12 +275,12 @@ const Activities = ({ activity, id }) => {
       </div>
 
       <div className='w-full md:w-1/3'>
-        <h4 className='text-gray-600 font-semibold text-lg mb-5'>
+        <h4 className='text-gray-300 font-semibold text-lg mb-5'>
           Add Activity
         </h4>
         <div className='w-full flex flex-wrap gap-5'>
           {act_types.map((item, index) => (
-            <div key={item} className='flex gap-2 items-center'>
+            <div key={item} className='flex gap-2 items-center text-[#fff]'>
               <input
                 type='checkbox'
                 className='w-4 h-4'
@@ -294,8 +294,8 @@ const Activities = ({ activity, id }) => {
             rows={10}
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder='Type ......'
-            className='bg-white w-full mt-10 border border-gray-300 outline-none p-4 rounded-md focus:ring-2 ring-blue-500'
+            placeholder='Type...'
+            className='bg-[#2B2A4C] w-full mt-10 outline-none p-4 rounded-md text-white'
           ></textarea>
           {isLoading ? (
             <Loading />
@@ -304,7 +304,7 @@ const Activities = ({ activity, id }) => {
               type='button'
               label='Submit'
               onClick={handleSubmit}
-              className='bg-blue-600 text-white rounded'
+              className='bg-[#2B2A4C] text-white rounded hover:bg-black hover:bg-opacity-40'
             />
           )}
         </div>
