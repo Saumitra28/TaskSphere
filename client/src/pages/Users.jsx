@@ -5,6 +5,8 @@ import { IoMdAdd } from "react-icons/io";
 import { summary } from "../assets/data";
 import { getInitials } from "../utils";
 import clsx from "clsx";
+import AddUser from "../components/AddUser"
+import ConfirmatioDialog from "../components/Dialogs";
 
 
 const Users = () => {
@@ -12,6 +14,19 @@ const Users = () => {
   const [open, setOpen] = useState(false);
   const [openAction, setOpenAction] = useState(false);
   const [selected, setSelected] = useState(null);
+
+  const userActionHandler = () => {};
+  const deleteHandler = () => {};
+
+  const deleteClick = (id) => {
+    setSelected(id);
+    setOpenDialog(true);
+  };
+
+  const editClick = (el) => {
+    setSelected(el);
+    setOpen(true);
+  };
 
   const TableHeader = () => (
     <thead className='border-b border-gray-300'>
@@ -98,6 +113,25 @@ const Users = () => {
           </div>
         </div>
       </div>
+
+      <AddUser
+        open={open}
+        setOpen={setOpen}
+        userData={selected}
+        key={new Date().getTime().toString()}
+      />
+
+      <ConfirmatioDialog
+        open={openDialog}
+        setOpen={setOpenDialog}
+        onClick={deleteHandler}
+      />
+
+      <UserAction
+        open={openAction}
+        setOpen={setOpenAction}
+        onClick={userActionHandler}
+      />
     </>
   );
 };
