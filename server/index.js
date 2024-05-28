@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import cors from "cors";
 import connectDB from "./utils/index.js";
+import { routeNotFound, errorHandler } from "./middlewares/errorMiddlewares.js";
+import routes from "./routes/index.js";
 
 dotenv.config();
 
@@ -22,10 +24,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded());
 app.use(morgan("dev"));
-// app.get("/api",routes);
+app.get("/api",routes);
 
-app.use(routenotfound);
-app.use(errorhandler);
+app.use(routeNotFound);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
