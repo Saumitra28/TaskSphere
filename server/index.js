@@ -24,8 +24,8 @@ app.use(express.urlencoded());
 app.use(morgan("dev"));
 // app.get("/api",routes);
 
-// app.use(routenotfound);
-// app.use(errorhandler);
+app.use(routenotfound);
+app.use(errorhandler);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
