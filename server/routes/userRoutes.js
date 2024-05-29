@@ -1,5 +1,5 @@
-import express from 'express';
-import { isAdminRoute, protectRoute } from "../middlewares/authMiddleware.js";
+import express from "express";
+import { isAdminRoute, protectRoute } from "../middlewares/authMiddlewave.js";
 import {
   activateUserProfile,
   changeUserPassword,
@@ -31,4 +31,5 @@ router
   .route("/:id")
   .put(protectRoute, isAdminRoute, activateUserProfile)
   .delete(protectRoute, isAdminRoute, deleteUserProfile);
+
 export default router;

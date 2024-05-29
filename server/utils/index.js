@@ -1,15 +1,15 @@
-import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
+import mongoose from "mongoose";
 
-const dbconnection = async () => {
+export const dbConnection = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI);
-    console.log("Database connected successfully");
+
+    console.log("DB connection established");
   } catch (error) {
-    console.log("Error while connecting to database", error);
+    console.log("DB Error: " + error);
   }
 };
-export default dbconnection;
 
 export const createJWT = (res, userId) => {
   const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
