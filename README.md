@@ -52,4 +52,5 @@ TaskSphere was inspired by the need for an efficient task management solution fo
 SCREENSHOTS
 
 DASHBOARD:
+![image](https://github.com/Saumitra28/TaskSphere/assets/142289554/dce199a6-1206-4982-aa1e-a3dc732bf55b)
 
