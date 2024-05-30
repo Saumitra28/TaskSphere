@@ -53,4 +53,20 @@ SCREENSHOTS
 
 DASHBOARD:
 ![image](https://github.com/Saumitra28/TaskSphere/assets/142289554/dce199a6-1206-4982-aa1e-a3dc732bf55b)
+![image](https://github.com/Saumitra28/TaskSphere/assets/142289554/b0754933-42aa-4eff-9a61-98debbd59021)
+
+TASKS:
+![image](https://github.com/Saumitra28/TaskSphere/assets/142289554/200cc67f-d959-4df5-999a-ef6fb9630d39)
+ADD TASK
+![image](https://github.com/Saumitra28/TaskSphere/assets/142289554/90a9b83b-753b-4c02-985c-2579d0a03c00)
+ADD SUBTASK:
+![image](https://github.com/Saumitra28/TaskSphere/assets/142289554/5f9bc78e-9f00-461f-a3e2-50c20ea73e2c)
+LIST-VIEW:
+![image](https://github.com/Saumitra28/TaskSphere/assets/142289554/ae4f8749-f902-41c6-8992-ee1409de3c87)
+TEAM:
+![image](https://github.com/Saumitra28/TaskSphere/assets/142289554/14ee8b98-ce02-4002-8384-fac7974eaff3)
+TRASHED:
+![image](https://github.com/Saumitra28/TaskSphere/assets/142289554/e38ffd30-7ae3-40d0-b644-ea4977122fc9)
+
+
 
