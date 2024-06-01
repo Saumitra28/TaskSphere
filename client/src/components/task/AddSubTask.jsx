@@ -3,6 +3,8 @@ import ModalWrapper from "../ModalWrapper";
 import { Dialog } from "@headlessui/react";
 import Textbox from "../Textbox";
 import Button from "../Button";
+import { useCreateSubTaskMutation } from "../../redux/slices/api/taskApiSlice";
+import { toast } from "sonner";
 
 const AddSubTask = ({ open, setOpen, id }) => {
   const {
@@ -11,19 +13,20 @@ const AddSubTask = ({ open, setOpen, id }) => {
     formState: { errors },
   } = useForm();
 
-  // const [addSbTask] = useCreateSubTaskMutation();
+  const [addSbTask] = useCreateSubTaskMutation();
 
   const handleOnSubmit = async (data) => {
-    // try {
-    //   const res = await addSbTask({ data, id }).unwrap();
-    //   toast.success(res.message);
-    //   setTimeout(() => {
-    //     setOpen(false);
-    //   }, 500);
-    // } catch (err) {
-    //   console.log(err);
-    //   toast.error(err?.data?.message || err.error);
-    // }
+    try {
+      const res = await addSbTask({ data, id }).unwrap();
+      toast.success(res.message);
+      window.location.reload();
+      setTimeout(() => {
+        setOpen(false);
+      }, 500);
+    } catch (err) {
+      console.log(err);
+      toast.error(err?.data?.message || err.error);
+    }
   };
 
   return (
@@ -77,13 +80,13 @@ const AddSubTask = ({ open, setOpen, id }) => {
           <div className='py-3 mt-4 flex sm:flex-row-reverse gap-4'>
             <Button
               type='submit'
-              className='bg-blue-600 text-sm font-semibold text-white hover:bg-blue-700 sm:ml-3 sm:w-auto'
+              className='bg-[#030637] px-8  rounded-xl text-sm font-semibold text-white sm:w-auto hover:bg-[black] hover:bg-opacity-60 '
               label='Add Task'
             />
 
             <Button
               type='button'
-              className='bg-white border text-sm font-semibold text-gray-900 sm:w-auto'
+              className='bg-white px-5 text-sm font-semibold text-gray-900 sm:w-auto hover:bg-gray-100 rounded-xl'
               onClick={() => setOpen(false)}
               label='Cancel'
             />

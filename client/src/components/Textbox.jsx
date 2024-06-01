@@ -4,7 +4,7 @@ import clsx from "clsx";
 const Textbox = React.forwardRef(
   ({ type, placeholder, label, className, register, name, error }, ref) => {
     return (
-      <div className='w-full flex flex-col gap-1'>
+      <div className='w-full flex flex-col gap-1 '>
         {label && (
           <label htmlFor={name} className='text-white'>
             {label}

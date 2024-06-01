@@ -5,9 +5,10 @@ import { summary } from "../../assets/data";
 import clsx from "clsx";
 import { getInitials } from "../../utils";
 import { MdCheck } from "react-icons/md";
+import { useGetTeamListQuery } from "../../redux/slices/api/userApiSlice";
 
 const UserList = ({ setTeam, team }) => {
-  const data = summary.users;
+  const{ data , isLoading}= useGetTeamListQuery();
   const [selectedUsers, setSelectedUsers] = useState([]);
 
   const handleChange = (el) => {
@@ -20,7 +21,7 @@ const UserList = ({ setTeam, team }) => {
     } else {
       setSelectedUsers(team);
     }
-  }, []);
+  }, [isLoading]);
 
   return (
     <div>
@@ -50,7 +51,7 @@ const UserList = ({ setTeam, team }) => {
             leaveFrom='opacity-100'
             leaveTo='opacity-0'
           >
-            <Listbox.Options className='z-50 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-[#2B2A4C] py-1 text-base shadow-xl ring-1 ring-black/5 focus:outline-none sm:text-sm'>
+            <Listbox.Options className='z-50 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-[#2B2A4C] py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm'>
               {data?.map((user, index) => (
                 <Listbox.Option
                   key={index}
@@ -91,6 +92,6 @@ const UserList = ({ setTeam, team }) => {
       </Listbox>
     </div>
   );
-}; 
+};
 
 export default UserList;

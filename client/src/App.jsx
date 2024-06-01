@@ -12,7 +12,7 @@ import TaskDetails from "./pages/TaskDetails";
 import Tasks from "./pages/Tasks";
 import Trash from "./pages/Trash";
 import Users from "./pages/Users";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/dashboard";
 import { setOpenSidebar } from "./redux/slices/authSlice";
 
 function Layout() {
@@ -48,7 +48,6 @@ const MobileSidebar = () => {
 
   const closeSidebar = () => {
     dispatch(setOpenSidebar(false));
-    console.log(isSidebarOpen);
   };
 
   return (
@@ -72,7 +71,7 @@ const MobileSidebar = () => {
             )}
             onClick={() => closeSidebar()}
           >
-            <div className='bg-white w-3/4 h-full'>
+            <div className='bg-[#100C08] w-3/4 h-full'>
               <div className='w-full flex justify-end px-5 mt-5'>
                 <button
                   onClick={() => closeSidebar()}
@@ -95,7 +94,7 @@ const MobileSidebar = () => {
 
 function App() {
   return (
-    <main className='w-full min-h-screen bg-[#100C08] '>
+    <main className='w-full min-h-screen bg-[#100C08]  '>
       <Routes>
         <Route element={<Layout />}>
           <Route index path='/' element={<Navigate to='/dashboard' />} />

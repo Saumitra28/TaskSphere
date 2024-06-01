@@ -18,7 +18,7 @@ export default function Tabs({ tabs, setSelected, children }) {
                   "w-fit flex items-center outline-none gap-2 px-3 py-2.5 text-base font-medium leading-5 bg-[#2B2A4C]",
 
                   selected
-                    ? "text-[#fff]  border-b-2 border-blue-600"
+                    ? "text-[#fff] border-b-2 border-blue-600"
                     : "text-gray-300  hover:text-blue-800"
                 )
               }

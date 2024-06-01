@@ -83,7 +83,7 @@ const Sidebar = () => {
   return (
     <div className='w-full  h-full flex flex-col gap-6 p-5'>
       <h1 className='flex gap-1 items-center'>
-        <p>
+      <p>
           <img src={logo} alt="logo" className="w-12 h-10"/>
         </p>
         <span className='text-2xl font-bold text-white'>TaskSphere</span>
