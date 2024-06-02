@@ -57,7 +57,7 @@ const AddUser = ({ open, setOpen, userData }) => {
         <form onSubmit={handleSubmit(handleOnSubmit)} className="">
           <Dialog.Title
             as="h2"
-            className="text-base font-bold leading-6 text-gray-900 mb-4"
+            className="text-base font-bold leading-6 text-white mb-4"
           >
             {userData ? "UPDATE PROFILE" : "ADD NEW USER"}
           </Dialog.Title>
@@ -117,13 +117,13 @@ const AddUser = ({ open, setOpen, userData }) => {
             <div className="py-3 mt-4 sm:flex sm:flex-row-reverse">
               <Button
                 type="submit"
-                className="bg-blue-600 px-8 text-sm font-semibold text-white hover:bg-blue-700  sm:w-auto"
+                className="bg-[#030637] px-8  rounded-xl text-sm font-semibold text-white sm:w-auto hover:bg-[black] hover:bg-opacity-60"
                 label="Submit"
               />
 
               <Button
                 type="button"
-                className="bg-white px-5 text-sm font-semibold text-gray-900 sm:w-auto"
+                className="bg-white mx-4 px-5 text-sm font-semibold text-gray-900 sm:w-auto hover:bg-gray-400 rounded-xl"
                 onClick={() => setOpen(false)}
                 label="Cancel"
               />
