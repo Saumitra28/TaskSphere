@@ -94,13 +94,6 @@ const Sidebar = () => {
           <NavLink el={link} key={link.label} />
         ))}
       </div>
-
-      <div className=''>
-        <button className='w-full flex gap-2 p-2 items-center text-lg text-[#fff]'>
-          <MdSettings />
-          <span>Settings</span>
-        </button>
-      </div>
     </div>
   );
 };
