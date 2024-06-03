@@ -28,7 +28,7 @@ const TaskCard = ({ task }) => {
   return (
     <>
       <div className='w-full h-fit bg-[#030637] shadow-md p-4 rounded'>
-        <div className='w-full flex justify-between'>
+        <div className='w-full flex justify-between text-white'>
           <div
             className={clsx(
               "flex flex-1 gap-1 items-center text-sm font-medium",

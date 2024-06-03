@@ -115,7 +115,7 @@ const UserTable = ({ users }) => {
         <p
           className={clsx(
             "w-fit px-3 py-1 rounded-full text-sm",
-            user?.isActive ? "bg-blue-200" : "bg-yellow-100"
+            user?.isActive ? "bg-blue-200 text-gray-900" : "bg-yellow-100 text-gray-900"
           )}
         >
           {user?.isActive ? "Active" : "Disabled"}
