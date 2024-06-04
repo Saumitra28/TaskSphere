@@ -124,7 +124,7 @@ const AddTask = ({ open, setOpen, task }) => {
         <form onSubmit={handleSubmit(submitHandler)}>
           <Dialog.Title
             as="h2"
-            className="text-base font-bold leading-6 text-white mb-4"
+            className="text-base font-bold leading-6 text-gray-900 mb-4"
           >
             {task?._id ? "UPDATE TASK" : "ADD TASK"}
           </Dialog.Title>
@@ -135,7 +135,7 @@ const AddTask = ({ open, setOpen, task }) => {
               type="text"
               name="title"
               label="Task Title"
-              className="w-full rounded bg-[#2B2A4C]"
+              className="w-full rounded"
               register={register("title", { required: "Title is required" })}
               error={errors.title ? errors.title.message : ""}
             />
@@ -156,7 +156,7 @@ const AddTask = ({ open, setOpen, task }) => {
                   type="date"
                   name="date"
                   label="Task Date"
-                  className="w-full rounded bg-[#2B2A4C]"
+                  className="w-full rounded"
                   register={register("date", {
                     required: "Date is required!",
                   })}
@@ -180,19 +180,19 @@ const AddTask = ({ open, setOpen, task }) => {
                 >
                   <input
                     type="file"
-                    className="hidden text-white"
+                    className="hidden"
                     id="imgUpload"
                     onChange={(e) => handleSelect(e)}
                     accept=".jpg, .png, .jpeg"
                     multiple={true}
                   />
-                  <BiImages  className="text-white" />
-                  <span  className="text-white">Add Assets</span>
+                  <BiImages />
+                  <span>Add Assets</span>
                 </label>
               </div>
             </div>
 
-            <div className="py-6 sm:flex sm:flex-row-reverse gap-4">
+            <div className="bg-gray-50 py-6 sm:flex sm:flex-row-reverse gap-4">
               {uploading ? (
                 <span className="text-sm py-2 text-red-500">
                   Uploading assets
@@ -201,13 +201,13 @@ const AddTask = ({ open, setOpen, task }) => {
                 <Button
                   label="Submit"
                   type="submit"
-                  className="bg-[#030637] px-8  rounded-xl text-sm font-semibold text-white sm:w-auto hover:bg-[black] hover:bg-opacity-60 "
+                  className="bg-blue-600 px-8 text-sm font-semibold text-white hover:bg-blue-700 sm:w-auto"
                 />
               )}
 
               <Button
                 type="button"
-                className="bg-white px-5 text-sm font-semibold text-gray-900 sm:w-auto hover:bg-gray-400 rounded-xl"
+                className="bg-white px-5 text-sm font-semibold text-gray-900 sm:w-auto"
                 onClick={() => setOpen(false)}
                 label="Cancel"
               />

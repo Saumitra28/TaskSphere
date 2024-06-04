@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { useLoginMutation } from "../redux/slices/api/authApiSlice";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../redux/slices/authSlice";
+import { Link } from "react-router-dom";
 // import{ Loading} from "../components/Loader";
 
 const Login = () => {
@@ -111,6 +112,9 @@ const Login = () => {
                 label='Submit'
                 className='w-full h-10 bg-[#2B2A4C] text-white rounded-full hover:black hover:bg-opacity-60'
               />
+               <p className="text-white">
+                Don't have an account? <Link to="/register">Register</Link>
+              </p>
             </div>
           </form>
         </div>

@@ -13,6 +13,7 @@ import Tasks from "./pages/Tasks";
 import Trash from "./pages/Trash";
 import Users from "./pages/Users";
 import Dashboard from "./pages/dashboard";
+import Register from "./pages/Register";
 import { setOpenSidebar } from "./redux/slices/authSlice";
 
 function Layout() {
@@ -109,6 +110,7 @@ function App() {
         </Route>
 
         <Route path='/log-in' element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
 
       <Toaster richColors />
