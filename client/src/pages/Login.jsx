@@ -9,7 +9,7 @@ import { useLoginMutation } from "../redux/slices/api/authApiSlice";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../redux/slices/authSlice";
 import { Link } from "react-router-dom";
-// import{ Loading} from "../components/Loader";
+import leftimg from "../assets/write.gif"
 
 const Login = () => {
   const { user } = useSelector((state) => state.auth);
@@ -59,7 +59,9 @@ const Login = () => {
             </p>
 
             <div className='cell'>
-              <div className='circle rotate-in-up-left'></div>
+              {/* <div className='circle rotate-in-up-left'></div> */}
+              <img src={leftimg} alt
+              =""/>
             </div>
           </div>
         </div>
@@ -75,45 +77,40 @@ const Login = () => {
                 Welcome back!
               </p>
               <p className='text-center text-base text-gray-400 '>
-                Keep all your credential safge.
+                Keep all your credential safe.
               </p>
             </div>
 
             <div className='flex flex-col gap-y-5'>
+              <p className="text-white ">Email Address</p>
               <Textbox
                 placeholder='email@example.com'
                 type='email'
                 name='email'
-                label='Email Address'
-                className='w-full rounded-full'
+                className='w-full rounded-full text-white'
                 register={register("email", {
                   required: "Email Address is required!",
                 })}
                 error={errors.email ? errors.email.message : ""}
               />
+              <p className="text-white ">Password</p>
               <Textbox
                 placeholder='your password'
                 type='password'
                 name='password'
-                label='Password'
-                className='w-full rounded-full'
+                className='w-full rounded-full text-white'
                 register={register("password", {
                   required: "Password is required!",
                 })}
                 error={errors.password ? errors.password.message : ""}
               />
-
-              <span className='text-sm text-gray-500 hover:text-blue-600 hover:underline cursor-pointer'>
-                Forget Password?
-              </span>
-
               <Button
                 type='submit'
-                label='Submit'
+                label='Login'
                 className='w-full h-10 bg-[#2B2A4C] text-white rounded-full hover:black hover:bg-opacity-60'
               />
-               <p className="text-white">
-                Don't have an account? <Link to="/register">Register</Link>
+               <p className="text-white text-sm text-center">
+                Don't have an account? <Link to="/register"><span className=" text-white hover:text-blue-400">Register</span></Link>
               </p>
             </div>
           </form>
