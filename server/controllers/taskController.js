@@ -15,9 +15,9 @@ export const createTask = async (req, res) => {
 
     text =
       text +
-      ` The task priority is set a ${priority} priority, so check and act accordingly. The task date is ${new Date(
+      ` The task has been assigned a priority level of ${priority}. Please review and take appropriate action. The scheduled task date is ${new Date(
         date
-      ).toDateString()}. Thank you!!!`;
+      ).toDateString()}. Thank you.`;
 
     const activity = {
       type: "assigned",
@@ -188,11 +188,10 @@ export const dashboardStatistics = async (req, res) => {
 
     res.status(200).json({
       status: true,
-      message: 'Successfully',
+      message: "Successfully",
       ...summary,
-      team: allTasks.map(task => task.team),
+      team: allTasks.map((task) => task.team),
     });
-    
   } catch (error) {
     console.log(error);
     return res.status(400).json({ status: false, message: error.message });
@@ -233,7 +232,6 @@ export const getTasks = async (req, res) => {
     return res.status(400).json({ status: false, message: error.message });
   }
 };
-
 
 export const getTask = async (req, res) => {
   try {
@@ -304,7 +302,7 @@ export const updateTask = async (req, res) => {
 
     res
       .status(200)
-      .json({ status: true, message: "Task duplicated successfully." });
+      .json({ status: true, message: "Task Updated successfully." });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ status: false, message: error.message });
