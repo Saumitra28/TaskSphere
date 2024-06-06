@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaList } from "react-icons/fa";
 import { MdGridView } from "react-icons/md";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import Loading from "../components/Loader";
 import Title from "../components/Title";
 import Button from "../components/Button";
@@ -27,53 +27,81 @@ const TASK_TYPE = {
 
 const Tasks = () => {
   const params = useParams();
+  const location = useLocation();
 
   const [selected, setSelected] = useState(0);
   const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const status = params?.status || "";
-  const {data,isLoading}= useGetAllTasksQuery({
+  const { data, isLoading, refetch } = useGetAllTasksQuery({
     strQuery: status,
     isTrashed: "",
     search: "",
   });
 
+  useEffect(() => {
+    // Refetch data when the location changes to '/tasks'
+    if (location.pathname === '/tasks') {
+      refetch();
+    }
+  }, [location, refetch]);
+
+  const refetchStatusTasks = (status) => {
+    refetch({
+      strQuery: status,
+      isTrashed: "",
+      search: "",
+    });
+  };
+
   return isLoading ? (
-    <div className='py-10'>
+    <div className="py-10">
       <Loading />
     </div>
   ) : (
-    <div className='w-full'>
-      <div className='flex items-center justify-between mb-4 text-[#fff]'>
+    <div className="w-full">
+      <div className="flex items-center justify-between mb-4 text-[#fff]">
         <Title title={status ? `${status} Tasks` : "Tasks"} />
 
         {!status && (
           <Button
             onClick={() => setOpen(true)}
-            label='Create Task'
-            icon={<IoMdAdd className='text-lg' />}
-            className='flex flex-row-reverse gap-1 items-center bg-[#2B2A4C] text-white rounded-md py-2 2xl:py-2.5'
+            label="Create Task"
+            icon={<IoMdAdd className="text-lg" />}
+            className="flex flex-row-reverse gap-1 items-center bg-[#2B2A4C] text-white rounded-md py-2 2xl:py-2.5"
           />
         )}
       </div>
 
       <Tabs tabs={TABS} setSelected={setSelected}>
         {!status && (
-          <div className='w-full flex justify-between gap-4 md:gap-x-12 py-4'>
-            <TaskTitle label='To Do' className={TASK_TYPE.todo} />
+          <div className="w-full flex justify-between gap-4 md:gap-x-12 py-4">
             <TaskTitle
-              label='In Progress'
-              className={TASK_TYPE["in progress"]}
+              label="To Do"
+              className={TASK_TYPE.todo}
+              onClick={() => refetchStatusTasks('todo')}
             />
-            <TaskTitle label='completed' className={TASK_TYPE.completed} />
+            <TaskTitle
+              label="In Progress"
+              className={TASK_TYPE["in progress"]}
+              onClick={() => refetchStatusTasks('in progress')}
+            />
+            <TaskTitle
+              label="Completed"
+              className={TASK_TYPE.completed}
+              onClick={() => refetchStatusTasks('completed')}
+            />
           </div>
         )}
 
-        {selected !== 1 ? (
+        {data?.tasks?.length === 0 ? (
+          <div className="text-center text-gray-400 py-4">
+            No tasks available 🚫📝
+          </div>
+        ) : selected !== 1 ? (
           <BoardView tasks={data?.tasks} />
         ) : (
-          <div className='w-full'>
+          <div className="w-full">
             <Table tasks={data?.tasks} />
           </div>
         )}

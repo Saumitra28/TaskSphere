@@ -1,3 +1,5 @@
+// App.jsx
+import React from "react";
 import { Transition } from "@headlessui/react";
 import clsx from "clsx";
 import { Fragment, useRef } from "react";
@@ -8,30 +10,58 @@ import { Toaster } from "sonner";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import TaskDetails from "./pages/TaskDetails";
 import Tasks from "./pages/Tasks";
 import Trash from "./pages/Trash";
 import Users from "./pages/Users";
 import Dashboard from "./pages/dashboard";
-import Register from "./pages/Register";
 import { setOpenSidebar } from "./redux/slices/authSlice";
+import { Helmet } from "react-helmet-async";
 
 function Layout() {
   const { user } = useSelector((state) => state.auth);
-
   const location = useLocation();
 
+  const getTitle = (pathname) => {
+    switch (pathname) {
+      case '/log-in':
+        return 'Log In - TaskSphere';
+      case 'register':
+        return 'Register - TaskSphere'; 
+      case '/dashboard':
+        return 'Dashboard - TaskSphere';
+      case '/tasks':
+        return 'Tasks - TaskSphere';
+      case '/completed/completed':
+        return 'Completed Tasks - TaskSphere';
+      case '/in-progress/in%20progress':
+        return 'In Progress Tasks - TaskSphere';
+      case '/todo/todo':
+        return 'To Do Tasks - TaskSphere';
+      case '/team':
+        return 'Team - TaskSphere';
+      case '/trashed':
+        return 'Trashed Tasks - TaskSphere';
+      case `/task/${location.pathname.split('/')[2]}`:
+        return 'Task Details - TaskSphere';
+      default:
+        return 'TaskSphere';
+    }
+  };
+
+  
   return user ? (
     <div className='w-full h-screen flex flex-col md:flex-row'>
+      <Helmet>
+        <title>{getTitle(location.pathname)}</title>
+      </Helmet>
       <div className='w-1/5 h-screen bg-[#100C08] sticky top-0 hidden md:block'>
         <Sidebar />
       </div>
-
       <MobileSidebar />
-
       <div className='flex-1 overflow-y-auto'>
         <Navbar />
-
         <div className='p-4 2xl:px-10'>
           <Outlet />
         </div>
@@ -110,7 +140,7 @@ function App() {
         </Route>
 
         <Route path='/log-in' element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path='/register' element={<Register />} />
       </Routes>
 
       <Toaster richColors />

@@ -34,7 +34,7 @@ const Trash = () => {
   const [type, setType] = useState("delete");
   const [selected, setSelected] = useState("");
 
-  const { data, isLoading ,refetch} = useGetAllTasksQuery({
+  const { data, isLoading, refetch } = useGetAllTasksQuery({
     strQuery: "",
     isTrashed: "true",
     search: "",
@@ -190,14 +190,20 @@ const Trash = () => {
         </div>
         <div className="bg-[#030637] px-2 md:px-6 py-4 shadow-md rounded">
           <div className="overflow-x-auto">
-            <table className="w-full mb-5">
-              <TableHeader />
-              <tbody>
-                {data?.tasks?.map((tk, id) => (
-                  <TableRow key={id} item={tk} />
-                ))}
-              </tbody>
-            </table>
+            {data?.tasks?.length === 0 ? (
+              <div className="text-center text-gray-400 py-4">
+                No trashed tasks available 💔
+              </div>
+            ) : (
+              <table className="w-full mb-5">
+                <TableHeader />
+                <tbody>
+                  {data?.tasks?.map((tk, id) => (
+                    <TableRow key={id} item={tk} />
+                  ))}
+                </tbody>
+              </table>
+            )}
           </div>
         </div>
       </div>

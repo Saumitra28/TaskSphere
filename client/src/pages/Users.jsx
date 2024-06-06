@@ -23,15 +23,15 @@ const Users = () => {
   const { data, isLoading, refetch } = useGetTeamListQuery();
   const [deleteUser] = useDeleteUserMutation();
   const [userAction] = useUserActionMutation();
-  
+
   const userActionHandler = async () => {
     try {
       const result = await userAction({
         isActive: !selected?.isActive,
         id: selected?._id,
       });
-       refetch();
-       window.location.reload();  
+      refetch();
+      window.location.reload();
       setSelected(null);
       setTimeout(() => setOpenAction(false), 500);
       toast.success(result.data.message);
@@ -41,7 +41,7 @@ const Users = () => {
     }
   };
 
-  const  deleteHandler = async (id) => {
+  const deleteHandler = async (id) => {
     console.log("Deleting user with ID:", id);
     try {
       const result = await deleteUser(id).unwrap();
@@ -59,7 +59,7 @@ const Users = () => {
     setSelected(id);
     setOpenDialog(true);
   };
-  
+
   const editClick = (el) => {
     setSelected(el);
     setOpen(true);
@@ -68,7 +68,7 @@ const Users = () => {
   const userStatusClick = (el) => {
     setSelected(el);
     setOpenAction(true);
-  }
+  };
 
   const TableHeader = () => (
     <thead className="border-b border-gray-300">
@@ -104,7 +104,9 @@ const Users = () => {
           onClick={() => userStatusClick(user)}
           className={clsx(
             "w-fit px-4 py-1 rounded-full",
-            user?.isActive ? "bg-blue-200 text-black" : "bg-yellow-100 text-gray-900"
+            user?.isActive
+              ? "bg-blue-200 text-black"
+              : "bg-yellow-100 text-gray-900"
           )}
         >
           {user?.isActive ? "Active" : "Disabled"}
@@ -142,20 +144,30 @@ const Users = () => {
           />
         </div>
 
-        <div className="bg-[#030637] px-2 md:px-4 py-4 shadow-md rounded">
-          <div className="overflow-x-auto">
-            <table className="w-full mb-5">
-              <TableHeader />
-              <tbody>
-                {data?.map((user, index) => (
-                  <TableRow key={index} user={user} />
-                ))}
-              </tbody>
-            </table>
+        {/* Conditionally render appropriate message when there are no users */}
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : data?.length === 0 ? (
+          <div className="text-center text-gray-400 py-4">
+            No users available 🚫👥
           </div>
-        </div>
+        ) : (
+          <div className="bg-[#030637] px-2 md:px-4 py-4 shadow-md rounded">
+            <div className="overflow-x-auto">
+              <table className="w-full mb-5">
+                <TableHeader />
+                <tbody>
+                  {data?.map((user, index) => (
+                    <TableRow key={index} user={user} />
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
       </div>
 
+      {/* Modal for adding a new user */}
       <AddUser
         open={open}
         setOpen={setOpen}
@@ -163,12 +175,14 @@ const Users = () => {
         key={new Date().getTime().toString()}
       />
 
+      {/* Confirmation dialog for deleting a user */}
       <ConfirmatioDialog
         open={openDialog}
         setOpen={setOpenDialog}
         onClick={() => deleteHandler(selected)}
       />
 
+      {/* Dialog for user action (toggle user status) */}
       <UserAction
         open={openAction}
         setOpen={setOpenAction}

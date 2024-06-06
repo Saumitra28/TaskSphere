@@ -16,6 +16,8 @@ import UserInfo from "../components/UserInfo";
 import { useGetDashboardStatsQuery } from "../redux/slices/api/taskApiSlice";
 import { useGetTeamListQuery } from "../redux/slices/api/userApiSlice";
 import Loading from "../components/Loader";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const TaskTable = ({ tasks }) => {
   const ICONS = {
@@ -139,9 +141,17 @@ const UserTable = ({ users }) => {
 };
 
 const Dashboard = () => {
-  const { data: taskData, isLoading } = useGetDashboardStatsQuery();
+  const { data: taskData, isLoading, refetch } = useGetDashboardStatsQuery();
   const { data: usersData } = useGetTeamListQuery();
   console.log("UserData",usersData);
+
+  useEffect(() => {
+    // Refetch data when the location changes to '/dashboard'
+    if (location.pathname === '/dashboard') {
+      refetch();
+    }
+  }, [location, refetch]);
+  
 
   if (isLoading) {
     return (
@@ -210,6 +220,7 @@ const Dashboard = () => {
       </div>
 
       <div className="w-full flex flex-col md:flex-row gap-4 2xl:gap-10 py-8">
+        
         <TaskTable tasks={taskData?.last10Task} />
         <UserTable users={usersData} />
       </div>
