@@ -50,7 +50,7 @@ export const taskApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     createSubTask: builder.mutation({
-      query: ({data,id}) => ({
+      query: ({ data, id }) => ({
         url: `${TASKS_URL}/create-subtask/${id}`,
         method: "PUT",
         body: data,
@@ -66,7 +66,7 @@ export const taskApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     postTaskActivity: builder.mutation({
-      query: ({data,id}) => ({
+      query: ({ data, id }) => ({
         url: `${TASKS_URL}/activity/${id}`,
         method: "POST",
         body: data,
@@ -77,6 +77,13 @@ export const taskApiSlice = apiSlice.injectEndpoints({
       query: ({ id, actionType }) => ({
         url: `${TASKS_URL}/delete-restore/${id}?actionType=${actionType}`,
         method: "DELETE",
+        credentials: "include",
+      }),
+    }),
+    searchTasks: builder.query({
+      query: (search) => ({
+        url: `${TASKS_URL}?search=${search}`,
+        method: "GET",
         credentials: "include",
       }),
     }),
@@ -94,4 +101,5 @@ export const {
   useGetSingleTaskQuery,
   usePostTaskActivityMutation,
   useDeleteRestoreTaskMutation,
+  useSearchTasksQuery,
 } = taskApiSlice;

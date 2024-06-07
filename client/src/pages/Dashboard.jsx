@@ -77,7 +77,7 @@ const TaskTable = ({ tasks }) => {
   );
 
   return (
-    <div className="w-full md:w-2/3 bg-[#030637] px-2 md:px-4 pt-4 pb-4 shadow-md rounded">
+    <div className="w-full md:w-2/3 bg-[#030637] px-2 md:px-4 pt-4 pb-4 shadow-md rounded-xl">
       <table className="w-full">
         <TableHeader />
         <tbody>
@@ -127,7 +127,7 @@ const UserTable = ({ users }) => {
   );
 
   return (
-    <div className="w-full md:w-1/3 bg-[#030637] h-fit px-2 md:px-6 py-4 shadow-md rounded">
+    <div className="w-full md:w-1/3 bg-[#030637] h-fit px-2 md:px-6 py-4 shadow-md rounded-xl">
       <table className="w-full mb-5">
         <TableHeader />
         <tbody>
@@ -194,7 +194,7 @@ const Dashboard = () => {
   ];
 
   const Card = ({ label, count, bg, icon }) => (
-    <div className="w-full h-32 bg-[#030637] p-5 shadow-md rounded-md flex items-center justify-between">
+    <div className="w-full h-32 bg-[#030637] p-5 shadow-md rounded-xl flex items-center justify-between">
       <div className="h-full flex flex-1 flex-col justify-between">
         <p className="text-base text-[#fff]">{label}</p>
         <span className="text-2xl font-semibold text-white">{count}</span>
@@ -214,7 +214,7 @@ const Dashboard = () => {
         ))}
       </div>
 
-      <div className="w-full bg-[#030637] my-16 p-4 rounded shadow-sm">
+      <div className="w-full bg-[#030637] my-16 p-4 rounded-xl shadow-sm">
         <h4 className="text-xl text-gray-600 font-semibold">Chart by Priority</h4>
         <Chart data={taskData?.graphData} />
       </div>

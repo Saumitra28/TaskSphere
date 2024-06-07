@@ -150,7 +150,7 @@ const Table = ({ tasks }) => {
   );
   return (
     <>
-      <div className="bg-[#030637]   px-2 md:px-4 pt-4 pb-9 shadow-md rounded">
+      <div className="bg-[#030637]   px-2 md:px-4 pt-4 pb-9 shadow-md rounded-xl">
         <div className="overflow-x-auto">
           <table className="w-full ">
             <TableHeader />

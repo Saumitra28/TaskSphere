@@ -152,7 +152,7 @@ const Users = () => {
             No users available 🚫👥
           </div>
         ) : (
-          <div className="bg-[#030637] px-2 md:px-4 py-4 shadow-md rounded">
+          <div className="bg-[#030637] px-2 md:px-4 py-4 shadow-md rounded-xl">
             <div className="overflow-x-auto">
               <table className="w-full mb-5">
                 <TableHeader />

@@ -124,24 +124,22 @@ const AddTask = ({ open, setOpen, task }) => {
         <form onSubmit={handleSubmit(submitHandler)}>
           <Dialog.Title
             as="h2"
-            className="text-base font-bold leading-6 text-gray-900 mb-4"
+            className="text-base font-bold leading-6 text-white mb-4"
           >
             {task?._id ? "UPDATE TASK" : "ADD TASK"}
           </Dialog.Title>
-
           <div className="mt-2 flex flex-col gap-6">
             <Textbox
               placeholder="Task Title"
               type="text"
               name="title"
               label="Task Title"
-              className="w-full rounded"
+              className="w-full rounded text-white"
               register={register("title", { required: "Title is required" })}
               error={errors.title ? errors.title.message : ""}
             />
 
             <UserList setTeam={setTeam} team={team} />
-
             <div className="flex gap-4">
               <SelectList
                 label="Task Stage"
@@ -156,7 +154,7 @@ const AddTask = ({ open, setOpen, task }) => {
                   type="date"
                   name="date"
                   label="Task Date"
-                  className="w-full rounded"
+                  className="w-full rounded text-white"
                   register={register("date", {
                     required: "Date is required!",
                   })}
@@ -175,7 +173,7 @@ const AddTask = ({ open, setOpen, task }) => {
 
               <div className="w-full flex items-center justify-center mt-4">
                 <label
-                  className="flex items-center gap-1 text-base text-ascent-2 hover:text-ascent-1 cursor-pointer my-4"
+                  className="flex items-center gap-1 text-base text-white text-ascent-2 hover:text-ascent-1 cursor-pointer my-4"
                   htmlFor="imgUpload"
                 >
                   <input
@@ -192,7 +190,7 @@ const AddTask = ({ open, setOpen, task }) => {
               </div>
             </div>
 
-            <div className="bg-gray-50 py-6 sm:flex sm:flex-row-reverse gap-4">
+            <div className="py-6 sm:flex sm:flex-row-reverse gap-4">
               {uploading ? (
                 <span className="text-sm py-2 text-red-500">
                   Uploading assets
@@ -201,13 +199,13 @@ const AddTask = ({ open, setOpen, task }) => {
                 <Button
                   label="Submit"
                   type="submit"
-                  className="bg-blue-600 px-8 text-sm font-semibold text-white hover:bg-blue-700 sm:w-auto"
+                  className="bg-[#030637] px-8 text-sm font-semibold text-white rounded-xl hover:bg-[black] hover:bg-opacity-60sm:w-auto"
                 />
               )}
 
               <Button
                 type="button"
-                className="bg-white px-5 text-sm font-semibold text-gray-900 sm:w-auto"
+                className="bg-white px-5 text-sm font-semibold  rounded-xl text-gray-900 hover:bg-gray-400 sm:w-auto"
                 onClick={() => setOpen(false)}
                 label="Cancel"
               />

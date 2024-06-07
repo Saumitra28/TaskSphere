@@ -188,7 +188,7 @@ const Trash = () => {
             />
           </div>
         </div>
-        <div className="bg-[#030637] px-2 md:px-6 py-4 shadow-md rounded">
+        <div className="bg-[#030637] px-2 md:px-6 py-4 shadow-md rounded-xl">
           <div className="overflow-x-auto">
             {data?.tasks?.length === 0 ? (
               <div className="text-center text-gray-400 py-4">
