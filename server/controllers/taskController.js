@@ -200,8 +200,8 @@ export const dashboardStatistics = async (req, res) => {
 
 export const getTasks = async (req, res) => {
   try {
-    const { stage, isTrashed } = req.query;
-    const { userId, isAdmin } = req.user; // Assuming req.user contains the user info
+    const { stage, isTrashed, search } = req.query;
+    const { userId, isAdmin } = req.user;
 
     let query = { isTrashed: isTrashed ? true : false };
 
@@ -209,8 +209,11 @@ export const getTasks = async (req, res) => {
       query.stage = stage;
     }
 
+    if (search) {
+      query.title = { $regex: search, $options: "i" };
+    }
+
     if (!isAdmin) {
-      // If the user is not an admin, only get tasks assigned to them
       query.team = { $all: [userId] };
     }
 
@@ -232,6 +235,7 @@ export const getTasks = async (req, res) => {
     return res.status(400).json({ status: false, message: error.message });
   }
 };
+
 
 export const getTask = async (req, res) => {
   try {

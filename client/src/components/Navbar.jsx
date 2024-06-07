@@ -2,12 +2,17 @@ import React from "react";
 import { MdOutlineSearch } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { setOpenSidebar } from "../redux/slices/authSlice";
+import { setSearchQuery } from "../redux/slices/searchSlice";
 import UserAvatar from "./UserAvatar";
 import NotificationPanel from "./NotificationPanel";
 
 const Navbar = () => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
+  const handleSearch = (e) => {
+    dispatch(setSearchQuery(e.target.value)); 
+  };
 
   return (
     <div className='flex justify-between items-center bg-[#100C08] px-4 py-3 2xl:py-4 sticky z-10 top-0'>
@@ -24,15 +29,15 @@ const Navbar = () => {
 
           <input
             type="text"
-            placeholder="Search...."
+            placeholder="Search in Tasks..."
             className="flex-1 outline-none bg-transparent placeholder:text-gray-500 text-[#fff]"
+            onChange={handleSearch}
           />
         </div>
       </div>
 
       <div className='flex gap-2 items-center'>
         <NotificationPanel />
-
         <UserAvatar />
       </div>
     </div>

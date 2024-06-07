@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaList } from "react-icons/fa";
 import { MdGridView } from "react-icons/md";
 import { useParams, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux"; // Import useSelector
 import Loading from "../components/Loader";
 import Title from "../components/Title";
 import Button from "../components/Button";
@@ -9,7 +10,6 @@ import { IoMdAdd } from "react-icons/io";
 import Tabs from "../components/Tabs";
 import TaskTitle from "../components/TaskTitle";
 import BoardView from "../components/BoardView";
-import { tasks } from "../assets/data";
 import Table from "../components/task/Table";
 import AddTask from "../components/task/AddTask";
 import { useGetAllTasksQuery } from "../redux/slices/api/taskApiSlice";
@@ -28,6 +28,7 @@ const TASK_TYPE = {
 const Tasks = () => {
   const params = useParams();
   const location = useLocation();
+  const searchQuery = useSelector((state) => state.search.query); 
 
   const [selected, setSelected] = useState(0);
   const [open, setOpen] = useState(false);
@@ -36,21 +37,18 @@ const Tasks = () => {
   const { data, isLoading, refetch } = useGetAllTasksQuery({
     strQuery: status,
     isTrashed: "",
-    search: "",
+    search: searchQuery, 
   });
 
   useEffect(() => {
-    // Refetch data when the location changes to '/tasks'
-    if (location.pathname === '/tasks') {
-      refetch();
-    }
-  }, [location, refetch]);
+    refetch();
+  }, [location, searchQuery, refetch]);
 
   const refetchStatusTasks = (status) => {
     refetch({
       strQuery: status,
       isTrashed: "",
-      search: "",
+      search: searchQuery,
     });
   };
 
