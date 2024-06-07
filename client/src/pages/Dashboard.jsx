@@ -108,8 +108,8 @@ const UserTable = ({ users }) => {
             <span className="text-center">{getInitials(user?.name)}</span>
           </div>
           <div>
-            <p>{user.name}</p>
-            <span className="text-xs text-[#fff]">{user?.role}</span>
+            <p className="text-white">{user.name}</p>
+            <span className="text-xs text-gray-400">{user?.role}</span>
           </div>
         </div>
       </td>
@@ -165,21 +165,21 @@ const Dashboard = () => {
   const stats = [
     {
       _id: "1",
-      label: "TOTAL TASK",
+      label: "TOTAL TASKS",
       total: taskData?.totalTasks || 0,
       icon: <FaNewspaper />,
       bg: "bg-[#1d4ed8]",
     },
     {
       _id: "2",
-      label: "COMPLETED TASK",
+      label: "COMPLETED TASKS",
       total: totals["completed"] || 0,
       icon: <MdAdminPanelSettings />,
       bg: "bg-[#0f766e]",
     },
     {
       _id: "3",
-      label: "TASK IN PROGRESS",
+      label: "TASKS IN PROGRESS",
       total: totals["in progress"] || 0,
       icon: <LuClipboardEdit />,
       bg: "bg-[#f59e0b]",
@@ -198,7 +198,6 @@ const Dashboard = () => {
       <div className="h-full flex flex-1 flex-col justify-between">
         <p className="text-base text-[#fff]">{label}</p>
         <span className="text-2xl font-semibold text-white">{count}</span>
-        <span className="text-sm text-gray-400">{"110 last month"}</span>
       </div>
       <div className={clsx("w-10 h-10 rounded-full flex items-center justify-center text-white", bg)}>
         {icon}

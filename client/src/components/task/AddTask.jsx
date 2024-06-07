@@ -192,7 +192,7 @@ const AddTask = ({ open, setOpen, task }) => {
 
             <div className="py-6 sm:flex sm:flex-row-reverse gap-4">
               {uploading ? (
-                <span className="text-sm py-2 text-red-500">
+                <span className="text-sm font-bold py-2 text-[#030637]">
                   Uploading assets
                 </span>
               ) : (
